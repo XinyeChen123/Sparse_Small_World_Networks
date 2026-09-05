@@ -20,8 +20,6 @@ def dijkstra(graph, graph_vertices, n):
 
         if u is None:
             break
-        if u == n//2:
-            break
 
         visited[u] = True
 
@@ -35,3 +33,16 @@ def dijkstra(graph, graph_vertices, n):
                     predecessors[v] = u
 
     return distances, predecessors
+
+def get_path(predecessors, start_vertex, end_vertex):
+    path = []
+    current = end_vertex
+
+    while current is not None:
+        path.insert(0, current)
+
+        if current == start_vertex:
+            return path
+
+        current = predecessors[current]
+    return []

@@ -67,21 +67,24 @@ def main():
         graph_vertices.append(i)
 
 
-
-
+    start_vertex = 0
+    end_vertex = n//2
     distances, predecessors = Dijkstras.dijkstra(A, graph_vertices, n)
 
-    predecessors.pop(0)
+    path = Dijkstras.get_path(
+        predecessors,
+        start_vertex,
+        end_vertex
+    )
+
 
     edges = []
-    for i in range(len(predecessors)-1):
-        edges.append((predecessors[i], predecessors[i+1]))
+    for i in range(len(path)-1):
+        edges.append((path[i], path[i+1]))
 
-    #print(edges)
-    print(predecessors)
-    #nx.draw_networkx_edges(G, pos, edgelist=edges, edge_color="green", width=1, alpha=0.6)
+    nx.draw_networkx_edges(G, pos, edgelist=edges, edge_color="green", width=1, alpha=0.6)
     plt.title(
-        f"Small-World Network: n={n}, ℓ={l}, α={alpha}"
+        f"Small-World Network: n={n}, l={l}, α={alpha}"
     )
     plt.axis("off")
     plt.show()
