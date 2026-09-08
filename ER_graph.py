@@ -1,12 +1,13 @@
 import sys
 import csv
 import numpy as np
+import datetime as datetime
 
 import Dijkstras_Algorithm as Dijkstras
 
 '''
     @params
-    Trial n l alpha start_vertex end_vertex random seed
+    Trial n l alpha start_vertex end_vertex 
 
 '''
 def main():
@@ -20,7 +21,7 @@ def main():
     end_vertex = sys.argv[5]
 
     # random graph
-    r = np.random.default_rng(seed=123)
+    r = np.random.default_rng(seed=(datetime.now()/50))
     A = np.zeros((n, n), dtype=int)
     # data for csv Trial, n, l, alpha, FirstPassageTime, Distance
     data = [1, n, l, alpha, start_vertex, end_vertex]
