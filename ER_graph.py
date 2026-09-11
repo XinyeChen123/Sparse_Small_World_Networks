@@ -7,7 +7,14 @@ import Dijkstras_Algorithm as Dijkstras
 
 '''
     @params
-    Trial n l alpha start_vertex end_vertex 
+    Trial n l p start_vertex end_vertex 
+
+    Trial = trial #
+    n = number nodes
+    l = up to how many neighboring nodes we can add a shortcut
+    p = probability of a shortcut existing between nodes
+    start_vertex = starting vertex
+    end_vertex = ending vertex
 
 '''
 def main():
@@ -15,16 +22,20 @@ def main():
     trial = sys.argv[0]
     n = sys.argv[1]
     l = sys.argv[2]
-    alpha = sys.argv[3]
-    p = alpha/n
+    p = sys.argv[3]
     start_vertex = sys.argv[4]
     end_vertex = sys.argv[5]
 
     # random graph
-    r = np.random.default_rng(seed=(datetime.now()/50))
+    now = datetime.now()
+    sec = now.strftime("%S")
+    min = now.strftime("%M")
+    hr = now.strftime("%H")
+    random_seed = int((int(sec) / int(min) * int(hr)) + int(sec))
+    r = np.random.default_rng(seed=random_seed)
     A = np.zeros((n, n), dtype=int)
-    # data for csv Trial, n, l, alpha, FirstPassageTime, Distance
-    data = [1, n, l, alpha, start_vertex, end_vertex]
+    # data for csv Trial, n, l, p, FirstPassageTime, Distance
+    data = [1, n, l, p, start_vertex, end_vertex]
     for i in range(n):
         j = (i + 1) % n
         A[i, j] = 1

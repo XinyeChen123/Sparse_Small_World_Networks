@@ -10,10 +10,12 @@ def main():
         writer = csv.writer(file)
         writer.writerow(header)
 
-    #number vertices
-    n = 100
-    for i in range(10):
-        sys.argv = [i, n, int(n/2), 2, 0, int(n/2)]
+    n = 10000 # 10 thousand vertices
+    l = n/100 # shortcut neighbors
+    p = 0.7 # probability of shortcut
+    for i in range(1000): # 1 thousand trials
+        #Trial n l p start_vertex, end_vertex
+        sys.argv = [i, n, l, p, 0, int(n/2)]
         with open("ER_graph.py", "r") as f:
             exec(f.read())
 
