@@ -13,7 +13,8 @@ def main():
     n = 10000 # 10 thousand vertices
     l = n/100 # shortcut neighbors
     p = 0.7 # probability of shortcut
-    for i in range(1000): # 1 thousand trials
+    for i in range(1): # 1 thousand trials
+        print("Trial: ", i+1)
         #Trial n l p start_vertex, end_vertex
         sys.argv = [i, n, l, p, 0, int(n/2)]
         with open("ER_graph.py", "r") as f:
