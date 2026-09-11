@@ -5,7 +5,7 @@ import Dijkstras_Algorithm as Dijkstras
 from datetime import datetime
 
 def main():
-    header = ['Trial', 'n', 'l', 'alpha', 'StartVertex', 'EndVertex', 'FirstPassageTime', 'Distance'] 
+    header = ['Trial', 'n', 'l', 'p', 'StartVertex', 'EndVertex', 'FirstPassageTime', 'Distance'] 
     with open('data.csv', 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         writer.writerow(header)
